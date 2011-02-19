@@ -3,6 +3,16 @@ package euler
 import scala.math._
 
 object Functions {
+
+  def max(a:Int,b:Int):Int = a > b match {
+    case true => a
+    case _    => b
+  }
+  
+  def min(a:Int,b:Int):Int = a < b match {
+    case true => a
+    case _    => b
+  }
   
   def max(a:Long,b:Long):Long = a > b match {
     case true => a

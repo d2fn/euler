@@ -7,7 +7,7 @@ val q = "What is the smallest positive " +
 
 val divisors = 1L to 20L
 
-var candidates =
+val candidates =
   for(i <- 1L to pow(2,20).toLong)
     yield
       divisors.filter{ x =>
