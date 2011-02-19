@@ -4,6 +4,16 @@ import scala.math._
 
 object Functions {
   
+  def max(a:Long,b:Long):Long = a > b match {
+    case true => a
+    case _    => b
+  }
+  
+  def min(a:Long,b:Long):Long = a < b match {
+    case true => a
+    case _    => b
+  }
+  
   /** fibonacci sequence **/
   def fib(n:Int):Long = n match {
     case 0 => 0

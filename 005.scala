@@ -5,20 +5,16 @@ val q = "What is the smallest positive " +
         "number that is evenly divisible by " +
         "all of the numbers from 1 to 20?"    
 
-val divisors = (1L to 20L)
+val divisors = 1L to 20L
 
-var candidates = List[Long]()
-
-for(i <- 1 to pow(2,20).toInt) {
-  val d = divisors.filter{ x =>
-            val mask = 1<<(x-1)
-            (mask & i) == mask
-          }
-  if(!d.isEmpty) {
-    candidates = d.reduceLeft(_*_) :: candidates
-  }
-}
+var candidates =
+  for(i <- 1L to pow(2,20).toLong)
+    yield
+      divisors.filter{ x =>
+        val mask = 1<<(x-1)
+        (mask & i) == mask
+      }.foldLeft(1L)(_*_)
   
-val ans = candidates.filter(hasDivisors(_,divisors)).sortWith((x,y)=>x<y).head
+val ans = candidates.filter(hasDivisors(_,divisors)).reduceRight(_ min _)
 
 println(q + ": " + ans)
