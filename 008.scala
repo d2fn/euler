@@ -26,7 +26,7 @@ val q = "Find the greatest product of five consecutive digits in the 1000-digit 
 def f(digits:List[Int], product:Int = 0):Int =
   digits.size match {
     case 0 => product
-    case _ => f(digits.drop(1),max(product,digits.take(5).foldLeft(1)(_*_)))
+    case _ => f(digits.tail,max(product,digits.take(5).foldLeft(1)(_*_)))
   }
 
 val ans = f(in)
